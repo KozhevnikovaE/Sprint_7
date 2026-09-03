@@ -13,7 +13,7 @@ class TestCreateOrder:
         None                # Без цвета
     ])
     def test_create_order_with_colors(self, generate_order_data, color):
-        order_data = generate_order_data
+        order_data = generate_order_data.copy()
         order_data["color"] = color  # ← УСЛОВИЕ УБРАНО!
         response = OrdersAPI.create_order(**order_data)
         assert response.status_code == 201
