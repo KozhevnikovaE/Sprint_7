@@ -1,6 +1,6 @@
 import pytest
 from api.api_helpers import ApiHelpers
-from helpers.data_generator import generate_random_string
+from helpers.data_generator import get_order_data
 from api.courier_api import CourierAPI
 
 @pytest.fixture
@@ -20,14 +20,7 @@ def create_and_delete_courier():
 
 @pytest.fixture
 def generate_order_data():
-    """Фикстура с динамическими данными для заказа"""
-    return {
-        "first_name": generate_random_string(8),
-        "last_name": generate_random_string(8),
-        "address": f"ул. {generate_random_string(10)}, д. {generate_random_string(2)}",
-        "metro_station": str(generate_random_string(2)),
-        "phone": f"+7 {generate_random_string(10)}",
-        "rent_time": 5,
-        "delivery_date": "2026-07-31",
-        "comment": "Тестовый заказ"
-    }
+    """Фикстура, которая возвращает данные для заказа из data_generator.py"""
+    return get_order_data()
+
+
