@@ -9,7 +9,7 @@ class TestCourierLogin:
     @allure.title('Курьер может авторизоваться')
     def test_login_courier_success(self, create_and_delete_courier):
         courier = create_and_delete_courier
-        assert courier is not None
+        
         response = CourierAPI.login_courier(courier['login'], courier['password'])
         assert response.status_code == 200
         assert "id" in response.json()
