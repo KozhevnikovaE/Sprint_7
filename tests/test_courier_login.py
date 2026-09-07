@@ -37,8 +37,7 @@ class TestCourierLogin:
     @allure.title('Система вернёт ошибку, если указан неверный логин курьера')
     def test_login_wrong_login(self, create_and_delete_courier):
         courier = create_and_delete_courier
-        assert courier is not None
-
+        
         response = CourierAPI.login_courier('wrong_login', courier['password'])
     
         assert response.status_code == 404
@@ -48,8 +47,7 @@ class TestCourierLogin:
     @allure.title('Система вернёт ошибку, если указан неверный пароль курьера')
     def test_login_wrong_password(self, create_and_delete_courier):
         courier = create_and_delete_courier
-        assert courier is not None
-
+  
         response = CourierAPI.login_courier(courier['login'], 'wrong_password')
     
         assert response.status_code == 404
